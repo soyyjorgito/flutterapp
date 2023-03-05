@@ -27,8 +27,11 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Uso del scaffold"),
+      appBar: AppBar(title: Text("Uso del scaffold"), actions: <Widget>[
+        IconButton(onPressed: _add, icon: Icon(Icons.add)),
+        IconButton(onPressed: _remove, icon: Icon(Icons.remove))
+      ],
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
       ),
       body: Center(),
       floatingActionButton:
@@ -38,5 +41,13 @@ class MyHomePage extends StatelessWidget {
       ),
       backgroundColor: Colors.black,
     );
+  }
+
+  void _add() {
+    print("hola");
+  }
+
+  void _remove() {
+    print("adios");
   }
 }
