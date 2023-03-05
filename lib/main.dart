@@ -11,25 +11,12 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Uso de paddings y margenes en Container'),
+          title: const Text('Colores'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Container(
-            width:200,
-            height:200,
-            color: Colors.orange,
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(20),
-        
-            child: const Text(
-              "-------",
-                style: TextStyle(
-                backgroundColor: Colors.black,
-                fontSize: 60
-              ),
-            ),
-          ),
+        body: Container(
+          width: 300,
+          height: 300,
+          color: Color.fromARGB(29, 209, 254, 1),
         ),
       ),
     );
