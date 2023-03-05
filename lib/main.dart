@@ -27,13 +27,12 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-          child: Text("Bienvenido a Flutter",
-              style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,))),
-    );
+        appBar: AppBar(),
+        body: Center(
+          child: Image.network(
+              "https://media.tenor.com/4_E21LSI0ogAAAAi/banana-cheerer.gif",
+              height: 250,
+              width: 250,),
+        ));
   }
 }
