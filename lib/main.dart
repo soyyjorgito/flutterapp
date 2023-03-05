@@ -10,26 +10,38 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Uso del Column'),
-        ),
-        body: SizedBox(
-          width:double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Container(
-                color: Colors.orange,
-                height:100,
-                width:100,
-                ),
-                Text("Hola, estoy en una columna"),
-                Image.network("https://media.tenor.com/4_E21LSI0ogAAAAi/banana-cheerer.gif")
-            ],
+          appBar: AppBar(
+            title: const Text('Uso de Column y Row'),
           ),
-        ),
-      ),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    const Expanded(child: Text("Activar sonido:")),
+                    Switch(value: false, onChanged: (value) {})
+                  ],
+                ),
+                const Divider(),
+                Row(
+                  children: <Widget>[
+                    const Expanded(child: Text("Habilitar uso de la camara:")),
+                    Switch(value: false, onChanged: (value) {})
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(height:50,width:50,color: Colors.orange),
+                    Container(height:50,width:50,color: Colors.red),
+                    Container(height:50,width:50,color: Colors.orange),
+                    Container(height:50,width:50,color: Colors.red),
+                  ],
+                ),
+              ],
+            ),
+          )),
     );
   }
 }
