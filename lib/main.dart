@@ -10,38 +10,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Uso de Column y Row'),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    const Expanded(child: Text("Activar sonido:")),
-                    Switch(value: false, onChanged: (value) {})
-                  ],
-                ),
-                const Divider(),
-                Row(
-                  children: <Widget>[
-                    const Expanded(child: Text("Habilitar uso de la camara:")),
-                    Switch(value: false, onChanged: (value) {})
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(height:50,width:50,color: Colors.orange),
-                    Container(height:50,width:50,color: Colors.red),
-                    Container(height:50,width:50,color: Colors.orange),
-                    Container(height:50,width:50,color: Colors.red),
-                  ],
-                ),
-              ],
+        appBar: AppBar(
+          title: const Text('Uso de paddings y margenes en Container'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            width:200,
+            height:200,
+            color: Colors.orange,
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
+        
+            child: const Text(
+              "-------",
+                style: TextStyle(
+                backgroundColor: Colors.black,
+                fontSize: 60
+              ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
