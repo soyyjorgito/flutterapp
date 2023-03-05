@@ -8,16 +8,56 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Colores'),
-        ),
-        body: Container(
-          width: 300,
-          height: 300,
-          color: Color.fromARGB(29, 209, 254, 1),
-        ),
+      title: 'Among Us',
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  List<String> names = [
+    "Jorge", 
+    "Kevin", 
+    "Tatiana",
+    "Mateo",
+    "Diego",
+    "Daniel",
+    "Daniela",
+    "Juliana",
+    "David",
+    "Santiago",
+    "Marcelo",
+    "Alejandro",
+    "Fernando",
+    "Roberto",
+    "Andres",
+    "Hugo",
+    "Pablo",
+    "Juan"
+    ];
+
+  MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Contactos'),
+        backgroundColor: Color.fromARGB(255, 15, 167, 1),
+      ),
+      body: ListView.builder(
+        itemCount: names.length,
+        itemBuilder: (BuildContext context, int index) {
+          final name = names[index];
+          return ListTile(
+            title: Text(name),
+            leading: Icon(Icons.person),
+            onTap: ()
+            {
+              print(name);
+            }
+            );
+        },
       ),
     );
   }
