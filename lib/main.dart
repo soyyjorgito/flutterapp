@@ -29,10 +29,13 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(),
         body: Center(
-          child: Image.network(
-              "https://media.tenor.com/4_E21LSI0ogAAAAi/banana-cheerer.gif",
-              height: 250,
-              width: 250,),
-        ));
+          child: IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () => print("Hola"),
+            color: Colors.green,
+            iconSize: 200,
+            )
+          )
+        );
   }
 }
