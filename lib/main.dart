@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -21,56 +19,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String name = "Marvin";
-  double ProgressValue = 0.0;
-  bool switchValue = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Gesture Detector"),
+      ),
       body: Center(
         child: Column(
-          children: <Widget>[
-            Text(name, style: TextStyle(fontSize: 30)),
-            LinearProgressIndicator(value: ProgressValue),
-            Switch(
-              value: switchValue,
-              onChanged: (value) {
-                setState(() {
-                  switchValue = value;
-                });
-              },
-            )
-          ],
+          children: <Widget>[ListItem(), ListItem(), ListItem()],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: changeName,
-        child: const Icon(Icons.refresh),
+    );
+  }
+}
+
+class ListItem extends StatelessWidget {
+  const ListItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _onTap,
+      onLongPress: _onLongPress,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: <Widget>[
+            Icon(Icons.folder),
+            SizedBox(width: 10),
+            Text("Mis videos")
+          ],
+        ),
       ),
     );
   }
 
-  void changeName() {
-    setState(() => {
-          if (name == "Marvin") {name = "Jorge"} else {name = "Marvin"},
-          ProgressValue += 0.01
-        });
+  void _onTap() {
+    print("hola");
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Timer.periodic(Duration(seconds: 1), (value) {
-      changeName();
-    });
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
+  void _onLongPress() {
+    print("Se ha mantenido el click");
   }
 }
