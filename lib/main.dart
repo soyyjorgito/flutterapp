@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Among Us',
+      title: 'Contactos',
       home: MyHomePage(),
     );
   }
@@ -43,7 +43,11 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contactos'),
-        backgroundColor: Color.fromARGB(255, 15, 167, 1),
+        actions: const <Widget>[
+          IconButton(onPressed: _add, icon: Icon(Icons.add))
+        ],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        backgroundColor: const Color.fromARGB(255, 15, 167, 1),
       ),
       body: ListView.builder(
         itemCount: names.length,
@@ -51,7 +55,7 @@ class MyHomePage extends StatelessWidget {
           final name = names[index];
           return ListTile(
             title: Text(name),
-            leading: Icon(Icons.person),
+            leading: const Icon(Icons.person),
             onTap: ()
             {
               print(name);
@@ -61,4 +65,9 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+void _add()
+{
+
 }
