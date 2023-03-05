@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.pink,
       ),
       home: MyHomePage(),
     );
@@ -27,15 +27,16 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () => print("Hola"),
-            color: Colors.green,
-            iconSize: 200,
-            )
-          )
-        );
+      appBar: AppBar(
+        title: Text("Uso del scaffold"),
+      ),
+      body: Center(),
+      floatingActionButton:
+          FloatingActionButton(child: Icon(Icons.add), onPressed: () => {}),
+      drawer: Drawer(
+        backgroundColor: Colors.pink,
+      ),
+      backgroundColor: Colors.black,
+    );
   }
 }
