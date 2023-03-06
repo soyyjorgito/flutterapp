@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Material App', home: MyHomePage());
+    return MaterialApp(title: 'Material App', home: MyHomePage());
   }
 }
 
@@ -23,43 +23,46 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Gesture Detector"),
+        title: const Text('Botones en Flutter'),
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[ListItem(), ListItem(), ListItem()],
-        ),
-      ),
+          child: Column(
+        children: <Widget>[
+          ElevatedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered))
+                      return Colors.blue.withOpacity(0.04);
+                    if (states.contains(MaterialState.focused) ||
+                        states.contains(MaterialState.pressed))
+                      return Colors.blue.withOpacity(0.80);
+                    return null; // Defer to the widget's default.
+                  },
+                ),
+              ),
+              onPressed: _onPressBtn1,
+              child: const Text("ElevatedButton",
+                  style: TextStyle(color: Colors.black))),
+          TextButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            ),
+            onPressed: _onPressBtn2,
+            child: Text('TextButton'),
+          ),
+          IconButton(onPressed: _onPressBtn3, icon: Icon(Icons.delete)),
+          OutlinedButton(onPressed: _onPressBtn4, child: Text("OutlinedButton"))
+        ],
+      )),
     );
   }
-}
 
-class ListItem extends StatelessWidget {
-  const ListItem({super.key});
+  void _onPressBtn1() {}
 
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _onTap,
-      onLongPress: _onLongPress,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: <Widget>[
-            Icon(Icons.folder),
-            SizedBox(width: 10),
-            Text("Mis videos")
-          ],
-        ),
-      ),
-    );
-  }
+  void _onPressBtn2() {}
+  void _onPressBtn3() {}
 
-  void _onTap() {
-    print("hola");
-  }
-
-  void _onLongPress() {
-    print("Se ha mantenido el click");
-  }
+  void _onPressBtn4() {}
 }
