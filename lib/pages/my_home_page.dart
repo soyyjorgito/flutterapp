@@ -15,7 +15,12 @@ class _MyHomePageState extends State<MyHomePage> {
   final nameController = TextEditingController();
   final lastNameController = TextEditingController();
 
-  
+  late FocusNode nameFocus;
+  late FocusNode lastNameFocus;
+  late FocusNode phoneFocus;
+  late FocusNode emailFocus;
+  late FocusNode ageFocus;
+  late FocusNode webSiteFocus;
 
   final formKey = GlobalKey<FormState>();
 
@@ -44,6 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       return "Llene este campo";
                     }
                   },
+                  focusNode: nameFocus,
+                  onEditingComplete: () {
+                    requestFocus(context, lastNameFocus);
+                  },
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   controller: lastNameController,
@@ -58,30 +68,51 @@ class _MyHomePageState extends State<MyHomePage> {
                       return "Llene este campo";
                     }
                   },
+                  focusNode: lastNameFocus,
+                  onEditingComplete: () {
+                    requestFocus(context, phoneFocus);
+                  },
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Número de teléfono:",
                   ),
                   keyboardType: TextInputType.phone,
+                  focusNode: phoneFocus,
+                  onEditingComplete: () {
+                    requestFocus(context, emailFocus);
+                  },
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Correo electrónico:",
                   ),
                   keyboardType: TextInputType.emailAddress,
+                  focusNode: emailFocus,
+                  onEditingComplete: () {
+                    requestFocus(context, ageFocus);
+                  },
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Edad:",
                   ),
                   keyboardType: TextInputType.number,
+                  focusNode: ageFocus,
+                  onEditingComplete: () {
+                    requestFocus(context, webSiteFocus);
+                  },
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Sitio web:",
                   ),
                   keyboardType: TextInputType.url,
+                  focusNode: webSiteFocus,
                 ),
                 ElevatedButton(
                   child: const Text('Mostrar segunda pantalla'),
@@ -96,6 +127,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void requestFocus(BuildContext context, FocusNode focusNode) {
+    FocusScope.of(context).requestFocus(focusNode);
+  }
+
   void _showSecondPage(BuildContext context) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
@@ -108,7 +143,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    
+    nameFocus = FocusNode();
+    lastNameFocus = FocusNode();
+    phoneFocus = FocusNode();
+    emailFocus = FocusNode();
+    ageFocus = FocusNode();
+    webSiteFocus = FocusNode();
   }
 
   @override
@@ -116,5 +156,11 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
     nameController.dispose();
     lastNameController.dispose();
+    nameFocus.dispose();
+    lastNameFocus.dispose();
+    phoneFocus.dispose();
+    emailFocus.dispose();
+    ageFocus.dispose();
+    webSiteFocus.dispose();
   }
 }
