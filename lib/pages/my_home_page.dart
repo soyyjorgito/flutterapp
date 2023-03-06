@@ -15,13 +15,15 @@ class _MyHomePageState extends State<MyHomePage> {
   final nameController = TextEditingController();
   final lastNameController = TextEditingController();
 
+  
+
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Uso del Widget Form'),
+        title: const Text('Tipos de teclado en TextField'),
       ),
       body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -57,6 +59,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                   },
                 ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Número de teléfono:",
+                  ),
+                  keyboardType: TextInputType.phone,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Correo electrónico:",
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Edad:",
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Sitio web:",
+                  ),
+                  keyboardType: TextInputType.url,
+                ),
                 ElevatedButton(
                   child: const Text('Mostrar segunda pantalla'),
                   onPressed: () {
@@ -82,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    
   }
 
   @override
